@@ -21,9 +21,10 @@ export default {
   },
   methods: {
     searchAMovie: function (movieName) {
+      this.moviesFilter = [];
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5`
+          `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
         )
         .then((result) => {
           this.moviesFilter = result.data.results;

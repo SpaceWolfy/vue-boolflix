@@ -1,6 +1,7 @@
 <template>
   <div class="card-box">
     <img
+      class="poster"
       :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
       alt="Movie poster"
     />
@@ -13,7 +14,16 @@
       <div><strong>Voto: </strong>{{ movie.vote_average }}</div>
 
       <div>
-        <strong>Lingua originale: </strong>"{{ movie.original_language }}"
+        <strong>Lingua originale: </strong>
+
+        <img
+          v-if="languages.includes(movie.original_language)"
+          class="flag"
+          :src="require('@/assets/' + movie.original_language + '.png')"
+          alt="Movie lang"
+        />
+
+        <div v-else>"{{ movie.original_language }}"</div>
       </div>
 
       <div><strong>Overview: </strong>{{ movie.overview }}</div>
@@ -23,6 +33,9 @@
 
 <script>
 export default {
+  data() {
+    return { languages: ["it", "en", "de", "us", "fr"] };
+  },
   props: {
     movie: Object,
   },
@@ -37,7 +50,7 @@ export default {
   border: 2px solid white;
   cursor: pointer;
 
-  img {
+  .poster {
     height: 100%;
     width: 100%;
   }
@@ -52,7 +65,7 @@ export default {
     background-color: black;
     overflow: auto;
 
-    img {
+    .poster {
       display: none;
     }
 
@@ -68,6 +81,11 @@ export default {
 
         &:nth-child(3) {
           color: yellow;
+        }
+
+        .flag {
+          width: 25px;
+          height: 15px;
         }
       }
     }
