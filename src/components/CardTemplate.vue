@@ -2,31 +2,31 @@
   <div class="card-box">
     <img
       class="poster"
-      :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+      :src="'https://image.tmdb.org/t/p/original/' + obj.poster_path"
       alt="Movie poster"
     />
 
     <div class="info">
-      <div><strong>Titlo: </strong>{{ movie.title }}</div>
+      <div><strong>Titolo: </strong>{{ obj.title }}</div>
 
-      <div><strong>Titlo originale: </strong>{{ movie.original_title }}</div>
+      <div><strong>Titolo originale: </strong>{{ obj.original_title }}</div>
 
-      <div><strong>Voto: </strong>{{ movie.vote_average }}</div>
+      <div><strong>Voto: </strong>{{ obj.vote_average }}</div>
 
       <div>
         <strong>Lingua originale: </strong>
 
         <img
-          v-if="languages.includes(movie.original_language)"
+          v-if="languages.includes(obj.original_language)"
           class="flag"
-          :src="require('@/assets/' + movie.original_language + '.png')"
+          :src="require('@/assets/' + obj.original_language + '.png')"
           alt="Movie lang"
         />
 
-        <div v-else>"{{ movie.original_language }}"</div>
+        <div v-else>"{{ obj.original_language }}"</div>
       </div>
 
-      <div><strong>Overview: </strong>{{ movie.overview }}</div>
+      <div><strong>Overview: </strong>{{ obj.overview }}</div>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
     return { languages: ["it", "en", "de", "us", "fr"] };
   },
   props: {
-    movie: Object,
+    obj: Object,
   },
 };
 </script>

@@ -1,10 +1,6 @@
 <template>
   <div class="main">
-    <card-template
-      v-for="movie in moviesFilter"
-      :key="movie.id"
-      :movie="movie"
-    />
+    <card-template v-for="obj in moviesFilter" :key="obj.id" :obj="obj" />
   </div>
 </template>
 
@@ -13,7 +9,7 @@ import CardTemplate from "./CardTemplate.vue";
 export default {
   components: { CardTemplate },
   props: {
-    moviesFilter: Array,
+    filterAll: Array,
   },
 };
 </script>

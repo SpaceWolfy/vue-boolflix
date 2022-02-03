@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-main @search="searchAMovie" />
-    <main-section :moviesFilter="moviesFilter" />
+    <main-section :filterAll="filterAll" />
   </div>
 </template>
 
@@ -17,17 +17,25 @@ export default {
     MainSection,
   },
   data() {
-    return { moviesFilter: [] };
+    return { filterAll: [] };
   },
   methods: {
-    searchAMovie: function (movieName) {
-      this.moviesFilter = [];
+    searchAll: function (movieName) {
+      this.filterAll = [];
       axios
         .get(
           `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
         )
         .then((result) => {
-          this.moviesFilter = result.data.results;
+          this.filterAll = result.data.results;
+        });
+
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
+        )
+        .then((result) => {
+          this.filterAll = result.data.results;
         });
     },
   },
