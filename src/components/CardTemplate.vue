@@ -17,7 +17,10 @@
         <strong>Titolo originale: </strong>{{ obj.original_title }}
       </div>
 
-      <div><strong>Voto: </strong>{{ obj.vote_average }}</div>
+      <div>
+        <strong>Voto: </strong>{{ fromNumberToStar() }}
+        <!-- {{ obj.vote_average }} -->
+      </div>
 
       <div>
         <strong>Lingua originale: </strong>
@@ -44,6 +47,13 @@ export default {
   },
   props: {
     obj: Object,
+  },
+  methods: {
+    fromNumberToStar: function () {
+      if (this.obj.vote_average <= 10) {
+        return Math.round(this.obj.vote_average / 2);
+      }
+    },
   },
 };
 </script>
@@ -83,10 +93,6 @@ export default {
 
         & strong {
           color: white;
-        }
-
-        &:nth-child(3) {
-          color: yellow;
         }
 
         .flag {
