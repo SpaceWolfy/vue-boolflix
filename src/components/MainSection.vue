@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <card-template v-for="obj in moviesFilter" :key="obj.id" :obj="obj" />
+    <card-template v-for="obj in filterAll" :key="obj.id" :obj="obj" />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-main @search="searchAMovie" />
+    <header-main @search="searchAll" />
     <main-section :filterAll="filterAll" />
   </div>
 </template>
@@ -17,25 +17,33 @@ export default {
     MainSection,
   },
   data() {
-    return { filterAll: [] };
+    return { filterAll: [], movieArray: [], tvShowArray: [] };
   },
   methods: {
-    searchAll: function (movieName) {
+    searchAll: function (keyWord) {
       this.filterAll = [];
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
+          `https://api.themoviedb.org/3/search/movie?query=${keyWord}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
         )
         .then((result) => {
-          this.filterAll = result.data.results;
+          this.movieArray = result.data.results;
+          this.movieArray.forEach((item) => {
+            item.val = "movie";
+            this.filterAll.push(item);
+          });
         });
 
       axios
         .get(
-          `https://api.themoviedb.org/3/search/tv?query=${movieName}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
+          `https://api.themoviedb.org/3/search/tv?query=${keyWord}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
         )
         .then((result) => {
-          this.filterAll = result.data.results;
+          this.tvShowArray = result.data.results;
+          this.tvShowArray.forEach((item) => {
+            item.val = "tvShow";
+            this.filterAll.push(item);
+          });
         });
     },
   },

@@ -7,7 +7,11 @@
     />
 
     <div class="info">
-      <div><strong>Titolo: </strong>{{ obj.title }}</div>
+      <div v-if="obj.val == 'movie'">
+        <strong>Titolo: </strong>{{ obj.title }}
+      </div>
+
+      <div v-else><strong>Titolo: </strong>{{ obj.name }}</div>
 
       <div><strong>Titolo originale: </strong>{{ obj.original_title }}</div>
 
