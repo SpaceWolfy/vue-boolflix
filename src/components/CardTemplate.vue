@@ -20,12 +20,9 @@
       <div class="voto">
         <strong>Voto: </strong>
 
-        <div v-for="index in fromNumberToStar()" :key="index">
-          <i class="fas fa-star"></i>
-        </div>
-
-        <div v-if="obj.vote_average == 0">
-          <i class="far fa-star"></i>
+        <div v-for="(element, index) in voteArray" :key="index">
+          <i v-if="index + 1 <= fromNumberToStar()" class="fas fa-star"></i>
+          <i v-else class="far fa-star"></i>
         </div>
         <!-- {{ obj.vote_average }} -->
       </div>
@@ -51,7 +48,10 @@
 <script>
 export default {
   data() {
-    return { languages: ["it", "en", "de", "us", "fr"] };
+    return {
+      languages: ["it", "en", "de", "us", "fr"],
+      voteArray: [1, 2, 3, 4, 5],
+    };
   },
   props: {
     obj: Object,
@@ -97,8 +97,6 @@ export default {
       display: block;
 
       div {
-        padding: 3px;
-
         & strong {
           color: white;
         }
