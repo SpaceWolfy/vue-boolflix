@@ -18,4 +18,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+</style>
