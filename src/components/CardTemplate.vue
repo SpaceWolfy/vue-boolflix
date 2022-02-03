@@ -16,11 +16,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return { isHovering: false };
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
