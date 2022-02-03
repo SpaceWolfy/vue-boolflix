@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <card-template />
+    <card-template
+      v-for="movie in moviesFilter"
+      :key="movie.id"
+      :movie="movie"
+    />
   </div>
 </template>
 
@@ -8,6 +12,9 @@
 import CardTemplate from "./CardTemplate.vue";
 export default {
   components: { CardTemplate },
+  props: {
+    moviesFilter: Array,
+  },
 };
 </script>
 

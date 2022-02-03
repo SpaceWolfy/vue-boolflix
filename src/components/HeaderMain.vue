@@ -1,12 +1,24 @@
 <template>
   <header>
     <div class="title">BOOLFLIX</div>
-    <input class="search-bar" type="text" />
+    <div class="search-cont">
+      <input v-model="movieKeyWord" class="search-bar" type="text" />
+      <button class="search" @click="$emit('search', movieKeyWord)">
+        Search
+      </button>
+    </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      movieKeyWord: "",
+    };
+  },
+  props: {},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -20,9 +32,17 @@ header {
     color: red;
     font-size: 28px;
   }
-
-  .search-bar {
+  .search-cont {
     height: 28px;
+
+    .search-bar {
+      height: 100%;
+      margin-right: 10px;
+    }
+
+    button {
+      height: 100%;
+    }
   }
 }
 </style>

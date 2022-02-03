@@ -6,7 +6,7 @@
     />
 
     <div class="info">
-      <div>ciao</div>
+      <div>{{ movie.title }}</div>
       <div>ciao</div>
       <div>ciao</div>
       <div>ciao</div>
@@ -16,7 +16,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    movie: Object,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
