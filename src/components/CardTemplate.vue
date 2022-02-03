@@ -25,8 +25,11 @@ export default {
 
 <style lang="scss" scoped>
 .card-box {
+  margin: 20px;
   height: 350px;
   width: 240px;
+  border: 2px solid white;
+  cursor: pointer;
 
   img {
     height: 100%;
