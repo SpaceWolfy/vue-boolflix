@@ -17,12 +17,20 @@
         <strong>Titolo originale: </strong>{{ obj.original_title }}
       </div>
 
-      <div>
-        <strong>Voto: </strong>{{ fromNumberToStar() }}
+      <div class="voto">
+        <strong>Voto: </strong>
+
+        <div v-for="index in fromNumberToStar()" :key="index">
+          <i class="fas fa-star"></i>
+        </div>
+
+        <div v-if="obj.vote_average == 0">
+          <i class="far fa-star"></i>
+        </div>
         <!-- {{ obj.vote_average }} -->
       </div>
 
-      <div>
+      <div class="lingua">
         <strong>Lingua originale: </strong>
 
         <img
@@ -50,7 +58,7 @@ export default {
   },
   methods: {
     fromNumberToStar: function () {
-      if (this.obj.vote_average <= 10) {
+      if (this.obj.vote_average > 0 && this.obj.vote_average <= 10) {
         return Math.round(this.obj.vote_average / 2);
       }
     },
@@ -99,6 +107,12 @@ export default {
           width: 25px;
           height: 15px;
         }
+      }
+
+      .voto {
+        display: flex;
+        align-items: center;
+        color: yellow;
       }
     }
   }
