@@ -13,7 +13,9 @@
 
       <div v-else><strong>Titolo: </strong>{{ obj.name }}</div>
 
-      <div><strong>Titolo originale: </strong>{{ obj.original_title }}</div>
+      <div v-if="obj.val == 'movie'">
+        <strong>Titolo originale: </strong>{{ obj.original_title }}
+      </div>
 
       <div><strong>Voto: </strong>{{ obj.vote_average }}</div>
 
