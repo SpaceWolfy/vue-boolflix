@@ -1,0 +1,48 @@
+.card-box {
+  height: 350px;
+  margin: 20px;
+  width: calc((100% / 7) - 40px);
+  border: 2px solid white;
+  cursor: pointer;
+
+  .poster {
+    height: 100%;
+    width: 100%;
+  }
+
+  .info {
+    padding: 10px;
+    display: none;
+    color: white;
+  }
+
+  &:hover {
+    background-color: black;
+    overflow: auto;
+
+    .poster {
+      display: none;
+    }
+
+    .info {
+      display: block;
+
+      div {
+        & strong {
+          color: white;
+        }
+
+        .flag {
+          width: 25px;
+          height: 15px;
+        }
+      }
+
+      .voto {
+        display: flex;
+        align-items: center;
+        color: yellow;
+      }
+    }
+  }
+}
