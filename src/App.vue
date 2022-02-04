@@ -29,7 +29,7 @@ export default {
         .then((result) => {
           this.movieArray = result.data.results;
           this.movieArray.forEach((item) => {
-            /* aggiungo all'array di oggetti la key val= a tvShow per gli elementi provenienti da questa API (verficare con vue extention) */
+            /* aggiungo all'array di oggetti la key val= movie per gli elementi provenienti da questa API (verficare con vue extention) */
             item.val = "movie";
             this.filterAll.push(item);
           });
@@ -42,7 +42,7 @@ export default {
         .then((result) => {
           this.tvShowArray = result.data.results;
           this.tvShowArray.forEach((item) => {
-            /* aggiungo all'array di oggetti la key val= a tvShow per gli elementi provenienti da questa API (verficare con vue extention) */
+            /* aggiungo all'array di oggetti la key val= tvShow per gli elementi provenienti da questa API (verficare con vue extention) */
             item.val = "tvShow";
             this.filterAll.push(item);
           });
