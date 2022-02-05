@@ -99,37 +99,5 @@ export default {
 
 <style lang="scss">
 @import "style/main.scss";
-
-.LoginPage {
-  height: 100vh;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
-  align-items: center;
-
-  h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-  }
-
-  .box-account {
-    margin-top: 30px;
-    height: 130px;
-    width: 130px;
-    background-color: rebeccapurple;
-    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/bb3a8833850498.56ba69ac33f26.png");
-    background-size: cover;
-    border-radius: 20px;
-    cursor: pointer;
-
-    &:hover {
-      height: 150px;
-      width: 150px;
-      transition: 0.5s;
-      border-radius: 30px;
-    }
-  }
-}
+@import "style/app.scss";
 </style>
