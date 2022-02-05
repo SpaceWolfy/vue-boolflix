@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header-main @search="searchAll" />
-    <main-section :filterAll="filterAll" />
+    <header-main @search="search" />
+    <main-section :movies="movieArray" :shows="tvShowArray" />
   </div>
 </template>
 
@@ -17,36 +17,44 @@ export default {
     MainSection,
   },
   data() {
-    return { filterAll: [], movieArray: [], tvShowArray: [] };
+    return {
+      movieArray: [],
+      tvShowArray: [],
+      apiKey: "3fbfc4b818bb0d4b8927c10be152c7b5",
+    };
   },
+  mounted() {},
+
   methods: {
-    searchAll: function (keyWord) {
-      this.filterAll = [];
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?query=${keyWord}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
-        )
+    search(querySearch) {
+      this.movieArray = [];
+      this.tvShowArray = [];
+      this.searchAMovie(querySearch);
+      this.searchAShow(querySearch);
+    },
+
+    async searchAMovie(movieQuery) {
+      this.movieArray = await this.serverCall("movie", movieQuery);
+    },
+
+    async searchAShow(showQuery) {
+      this.tvShowArray = await this.serverCall("tv", showQuery);
+    },
+
+    async serverCall(type, query) {
+      const params = {
+        query: query,
+        api_key: this.apiKey,
+      };
+
+      const results = await axios
+        .get(`https://api.themoviedb.org/3/search/${type}`, { params })
         .then((result) => {
-          this.movieArray = result.data.results;
-          this.movieArray.forEach((item) => {
-            /* aggiungo all'array di oggetti la key val= movie per gli elementi provenienti da questa API (verficare con vue extention) */
-            item.val = "movie";
-            this.filterAll.push(item);
-          });
+          console.log("HO RISPOSTO", result.data.results);
+          return result.data.results;
         });
 
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/tv?query=${keyWord}&api_key=3fbfc4b818bb0d4b8927c10be152c7b5&language=it`
-        )
-        .then((result) => {
-          this.tvShowArray = result.data.results;
-          this.tvShowArray.forEach((item) => {
-            /* aggiungo all'array di oggetti la key val= tvShow per gli elementi provenienti da questa API (verficare con vue extention) */
-            item.val = "tvShow";
-            this.filterAll.push(item);
-          });
-        });
+      return results;
     },
   },
 };
