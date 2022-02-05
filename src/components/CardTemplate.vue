@@ -2,19 +2,23 @@
   <div class="card-box">
     <img
       class="poster"
-      :src="'https://image.tmdb.org/t/p/original/' + obj.poster_path"
-      alt="Movie poster"
+      :src="'https://image.tmdb.org/t/p/original/' + result.poster_path"
+      alt="result poster"
     />
 
     <div class="info">
-      <div v-if="obj.val == 'movie'">
-        <strong>Titolo: </strong>{{ obj.title }}
+      <div v-if="result.title">
+        <div><strong>Titolo: </strong>{{ result.title }}</div>
+
+        <div>
+          <strong>Titolo originale: </strong>{{ result.original_title }}
+        </div>
       </div>
 
-      <div v-else><strong>Titolo: </strong>{{ obj.name }}</div>
+      <div v-else>
+        <div><strong>Titolo: </strong>{{ result.names }}</div>
 
-      <div v-if="obj.val == 'movie'">
-        <strong>Titolo originale: </strong>{{ obj.original_title }}
+        <div><strong>Titolo originale: </strong>{{ result.original_name }}</div>
       </div>
 
       <div class="voto">
@@ -24,23 +28,23 @@
           <i v-if="index + 1 <= fromNumberToStar()" class="fas fa-star"></i>
           <i v-else class="far fa-star"></i>
         </div>
-        <!-- {{ obj.vote_average }} -->
+        <!-- {{ result.vote_average }} -->
       </div>
 
       <div class="lingua">
         <strong>Lingua originale: </strong>
 
         <img
-          v-if="languages.includes(obj.original_language)"
+          v-if="languages.includes(result.original_language)"
           class="flag"
-          :src="require('@/assets/' + obj.original_language + '.png')"
-          alt="Movie lang"
+          :src="require('@/assets/' + result.original_language + '.png')"
+          alt="result lang"
         />
 
-        <div v-else>"{{ obj.original_language }}"</div>
+        <div v-else>"{{ result.original_language }}"</div>
       </div>
 
-      <div><strong>Overview: </strong>{{ obj.overview }}</div>
+      <div><strong>Overview: </strong>{{ result.overview }}</div>
     </div>
   </div>
 </template>
@@ -54,12 +58,12 @@ export default {
     };
   },
   props: {
-    obj: Object,
+    result: Object,
   },
   methods: {
     fromNumberToStar: function () {
-      if (this.obj.vote_average > 0 && this.obj.vote_average <= 10) {
-        return Math.round(this.obj.vote_average / 2);
+      if (this.result.vote_average > 0 && this.result.vote_average <= 10) {
+        return Math.round(this.result.vote_average / 2);
       }
     },
   },
