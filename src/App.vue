@@ -123,6 +123,13 @@ export default {
     background-size: cover;
     border-radius: 20px;
     cursor: pointer;
+
+    &:hover {
+      height: 150px;
+      width: 150px;
+      transition: 0.5s;
+      border-radius: 30px;
+    }
   }
 }
 </style>
