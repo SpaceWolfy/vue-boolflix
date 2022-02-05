@@ -27,10 +27,13 @@ export default {
 
   methods: {
     search(querySearch) {
-      this.movieArray = [];
-      this.tvShowArray = [];
-      this.searchAMovie(querySearch);
-      this.searchAShow(querySearch);
+      if (querySearch !== "") {
+        this.searchAMovie(querySearch);
+        this.searchAShow(querySearch);
+      } else {
+        this.movieArray = [];
+        this.tvShowArray = [];
+      }
     },
 
     async searchAMovie(movieQuery) {
@@ -51,7 +54,11 @@ export default {
         .get(`https://api.themoviedb.org/3/search/${type}`, { params })
         .then((result) => {
           console.log("HO RISPOSTO", result.data.results);
-          return result.data.results;
+          if (result.data.total_results === 0) {
+            return alert("La tua ricerca non ha prodotto risultati");
+          } else {
+            return result.data.results;
+          }
         });
 
       return results;

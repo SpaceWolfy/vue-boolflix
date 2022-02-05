@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" v-if="movies.length !== 0 || shows.length !== 0">
     <!-- <card-template v-for="obj in movies" :key="obj.id" :obj="obj" /> -->
     <movie-section :movies="movies" />
     <show-section :shows="shows" />
