@@ -1,11 +1,25 @@
 <template>
   <div id="app">
-    <header-main @search="search" />
-    <main-section
-      :movies="movieArray"
-      :shows="tvShowArray"
-      :trending="trendingArray"
-    />
+    <div class="LoginPage" v-show="show">
+      <h1>Bentornato XxSuperDevxX!</h1>
+      <h2>Seleziona il tuo account</h2>
+      <div
+        @click="
+          show = false;
+          hide = true;
+        "
+        class="box-account"
+      ></div>
+    </div>
+
+    <div class="MainPage" v-show="hide">
+      <header-main @search="search" />
+      <main-section
+        :movies="movieArray"
+        :shows="tvShowArray"
+        :trending="trendingArray"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,6 +36,8 @@ export default {
   },
   data() {
     return {
+      show: true,
+      hide: false,
       movieArray: [],
       tvShowArray: [],
       trendingArray: [],
@@ -83,4 +99,30 @@ export default {
 
 <style lang="scss">
 @import "style/main.scss";
+
+.LoginPage {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  align-items: center;
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .box-account {
+    margin-top: 30px;
+    height: 130px;
+    width: 130px;
+    background-color: rebeccapurple;
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/bb3a8833850498.56ba69ac33f26.png");
+    background-size: cover;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
 </style>
