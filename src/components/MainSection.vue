@@ -4,21 +4,26 @@
     <movie-section :movies="movies" />
     <show-section :shows="shows" />
   </div>
+  <div v-else>
+    <trending-section :trending="trending" />
+  </div>
 </template>
 
 <script>
 /* import CardTemplate from "./CardTemplate.vue"; */
 import MovieSection from "./MovieSection.vue";
 import ShowSection from "./ShowSection.vue";
+import TrendingSection from "./TrendingSection.vue";
 export default {
   components: {
-    /* CardTemplate */
+    TrendingSection,
     ShowSection,
     MovieSection,
   },
   props: {
     movies: Array,
     shows: Array,
+    trending: Array,
   },
 };
 </script>

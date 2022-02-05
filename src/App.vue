@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <header-main @search="search" />
-    <main-section :movies="movieArray" :shows="tvShowArray" />
+    <main-section
+      :movies="movieArray"
+      :shows="tvShowArray"
+      :trending="trendingArray"
+    />
   </div>
 </template>
 
@@ -20,10 +24,19 @@ export default {
     return {
       movieArray: [],
       tvShowArray: [],
+      trendingArray: [],
       apiKey: "3fbfc4b818bb0d4b8927c10be152c7b5",
     };
   },
-  mounted() {},
+  mounted() {
+    axios
+      .get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}`)
+      .then((res) => {
+        for (let i = 0; i < 15; i++) {
+          this.trendingArray.push(res.data.results[i]);
+        }
+      });
+  },
 
   methods: {
     search(querySearch) {
@@ -48,6 +61,7 @@ export default {
       const params = {
         query: query,
         api_key: this.apiKey,
+        language: "it",
       };
 
       const results = await axios
