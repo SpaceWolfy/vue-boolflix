@@ -5,6 +5,16 @@
   border: 2px solid white;
   cursor: pointer;
 
+  .not-found {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
   .poster {
     height: 100%;
     width: 100%;
@@ -20,7 +30,8 @@
     background-color: black;
     overflow: auto;
 
-    .poster {
+    .poster,
+    .not-found {
       display: none;
     }
 

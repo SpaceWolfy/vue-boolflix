@@ -1,10 +1,18 @@
 <template>
   <div class="card-box">
     <img
+      v-if="result.poster_path"
       class="poster"
       :src="'https://image.tmdb.org/t/p/original/' + result.poster_path"
       alt="result poster"
     />
+
+    <div v-else class="not-found">
+      <img
+        src="https://media.istockphoto.com/vectors/error-page-or-file-not-found-icon-vector-id924949200?k=20&m=924949200&s=170667a&w=0&h=-g01ME1udkojlHCZeoa1UnMkWZZppdIFHEKk6wMvxrs="
+        alt=""
+      />
+    </div>
 
     <div class="info">
       <div v-if="result.title">
@@ -16,7 +24,7 @@
       </div>
 
       <div v-else>
-        <div><strong>Titolo: </strong>{{ result.names }}</div>
+        <div><strong>Titolo: </strong>{{ result.name }}</div>
 
         <div><strong>Titolo originale: </strong>{{ result.original_name }}</div>
       </div>
