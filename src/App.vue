@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div class="LoginPage" v-show="show">
-      <h1>Bentornato XxSuperDevxX!</h1>
-      <h2>Seleziona il tuo account</h2>
+      <h1>Chi sta guardando?</h1>
       <div
         @click="
           show = false;
@@ -10,6 +9,8 @@
         "
         class="box-account"
       ></div>
+      <div class="profile-name">DeveloperHD</div>
+      <button>GESTISCI IL PROFILO</button>
     </div>
 
     <div class="MainPage" v-show="hide">
