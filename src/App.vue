@@ -18,7 +18,8 @@
       <main-section
         :movies="movieArray"
         :shows="tvShowArray"
-        :trending="trendingArray"
+        :trendingFilm="trendingArrayFilm"
+        :trendingSeries="trendingArraySeries"
       />
     </div>
   </div>
@@ -41,7 +42,8 @@ export default {
       hide: false,
       movieArray: [],
       tvShowArray: [],
-      trendingArray: [],
+      trendingArrayFilm: [],
+      trendingArraySeries: [],
       apiKey: "3fbfc4b818bb0d4b8927c10be152c7b5",
     };
   },
@@ -49,8 +51,16 @@ export default {
     axios
       .get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}`)
       .then((res) => {
-        for (let i = 0; i < 15; i++) {
-          this.trendingArray.push(res.data.results[i]);
+        for (let i = 0; i < 16; i++) {
+          this.trendingArrayFilm.push(res.data.results[i]);
+        }
+      });
+
+    axios
+      .get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.apiKey}`)
+      .then((res) => {
+        for (let i = 0; i < 16; i++) {
+          this.trendingArraySeries.push(res.data.results[i]);
         }
       });
   },

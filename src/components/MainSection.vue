@@ -5,7 +5,10 @@
     <show-section :shows="shows" />
   </div>
   <div v-else>
-    <trending-section :trending="trending" />
+    <trending-section
+      :trendingFilm="trendingFilm"
+      :trendingSeries="trendingSeries"
+    />
   </div>
 </template>
 
@@ -23,7 +26,8 @@ export default {
   props: {
     movies: Array,
     shows: Array,
-    trending: Array,
+    trendingFilm: Array,
+    trendingSeries: Array,
   },
 };
 </script>

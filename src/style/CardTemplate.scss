@@ -1,9 +1,9 @@
 .card-box {
   height: 350px;
-  margin: 20px;
   width: calc((100% / 7) - 40px);
-  border: 2px solid white;
   cursor: pointer;
+  margin-left: 5px;
+  margin-bottom: 10px;
 
   .not-found {
     background-color: white;

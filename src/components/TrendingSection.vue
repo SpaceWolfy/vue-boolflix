@@ -1,10 +1,20 @@
 <template>
   <div class="main">
-    <div class="filter">Trending</div>
+    <div class="filter">Film del momento</div>
 
     <div class="card-container">
       <card-template
-        v-for="trending in trending"
+        v-for="trending in trendingFilm"
+        :key="trending.id"
+        :result="trending"
+      />
+    </div>
+
+    <div class="filter">Serie del momento</div>
+
+    <div class="card-container">
+      <card-template
+        v-for="trending in trendingSeries"
         :key="trending.id"
         :result="trending"
       />
@@ -19,7 +29,8 @@ export default {
     CardTemplate,
   },
   props: {
-    trending: Array,
+    trendingFilm: Array,
+    trendingSeries: Array,
   },
 };
 </script>
