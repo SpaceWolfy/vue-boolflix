@@ -49,7 +49,9 @@ export default {
   },
   mounted() {
     axios
-      .get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}`)
+      .get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=it`
+      )
       .then((res) => {
         for (let i = 0; i < 16; i++) {
           this.trendingArrayFilm.push(res.data.results[i]);
@@ -57,7 +59,9 @@ export default {
       });
 
     axios
-      .get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.apiKey}`)
+      .get(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${this.apiKey}&language=it`
+      )
       .then((res) => {
         for (let i = 0; i < 16; i++) {
           this.trendingArraySeries.push(res.data.results[i]);
