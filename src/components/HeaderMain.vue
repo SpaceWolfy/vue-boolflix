@@ -69,6 +69,7 @@ export default {
 <style lang="scss" scoped>
 .header-container {
   background-image: url("../assets/stranger4.jpg");
+  width: 100%;
   height: 650px;
   background-position-y: -400px;
   background-repeat: no-repeat;

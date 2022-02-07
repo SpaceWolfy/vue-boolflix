@@ -1,8 +1,22 @@
 .card-container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   padding: 10px 35px;
   margin-bottom: 25px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.card-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.card-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: rgb(70, 70, 70);
 }
 
 .filter {

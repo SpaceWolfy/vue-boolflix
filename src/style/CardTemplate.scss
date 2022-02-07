@@ -1,6 +1,8 @@
 .card-box {
-  height: 350px;
-  width: calc((100% / 7) - 40px);
+  min-height: 350px;
+  min-width: calc((100% / 7) - 40px);
+  max-height: 350px;
+  max-width: calc((100% / 7) - 40px);
   cursor: pointer;
   margin-left: 5px;
   margin-bottom: 10px;

@@ -36,5 +36,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/subsection.scss";
+@import "../style/trendingsub.scss";
 </style>
